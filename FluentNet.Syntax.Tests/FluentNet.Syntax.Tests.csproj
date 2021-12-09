@@ -26,7 +26,6 @@
 
   <ItemGroup>
     <Content Include="fixtures\**" CopyToOutputDirectory="PreserveNewest" />
-    <Content Include="benches\**" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
