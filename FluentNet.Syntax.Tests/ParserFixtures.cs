@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Fluent.Syntax;
@@ -22,45 +23,49 @@ public class ParserFixtures
 		return trim ? s.Trim() : s;
 	}
 
-	[Fact]
-	public void ParseFixturesCompare() {
-		var files = Directory.GetFiles("./fixtures", "*.ftl");
+	[Theory]
+	[DirectoryFilesData("*.ftl", "./fixtures")]
+	public void ParseFixturesCompare(string path) {
+		var referencePath = path.Replace(".ftl", ".json");
+		var referenceFile = ReadFile(referencePath, true);
+		var ftlFile = ReadFile(path, false);
 
-		foreach (var path in files)
+		var skips = new[]
 		{
-			var isCrlf = path.Contains("crlf");
+			// Broken Attributes break the entire Entry right now.
+			// https://github.com/projectfluent/fluent.js/issues/237
+			"leading_dots.ftl",
+		};
 
-			var referencePath = path.Replace(".ftl", ".json");
-			var referenceFile = ReadFile(referencePath, true);
-			var ftlFile = ReadFile(path, false);
+		if (skips.Any(path.Contains)) {
+			return;
+		}
 
-			output.WriteLine("Parsing: {0}", path);
+		var parsedAst = new FluentParser().parse(ftlFile);
 
-			var targetAst = Parser.Parse(ftlFile).Value;
+		var refAst = JsonConvert.DeserializeObject<AST.Resource>(referenceFile);
 
-			var refAst = JsonConvert.DeserializeObject<Resource<string>>(referenceFile);
+		foreach (var entry in parsedAst.Body) {
+			if (entry is AST.Junk junk)
+				junk.Annotations = new List<AST.Annotation>();
+		}
 
-			// adapt_ast(&mut ref_ast, isCrlf);
-
-			Assert.Equal(refAst.Body.Count, targetAst.Body.Count);
-			foreach (var (entry, refEntry) in targetAst.Body.Zip(refAst.Body)) {
-				Assert.Equal(refEntry, entry);
-			}
+		Assert.Equal(refAst.Body.Count, parsedAst.Body.Count);
+		foreach (var (refMessage, parsedMessage) in refAst.Body.Zip(parsedAst.Body)) {
+			var expected = JsonConvert.SerializeObject(refMessage, Formatting.Indented);
+			var actual = JsonConvert.SerializeObject(parsedMessage, Formatting.Indented);
+			Assert.Equal(expected, actual);
 		}
 	}
 
-	[Fact]
-	public void ParseFixtures()
+	[Theory]
+	[DirectoryFilesData("*.ftl", "./fixtures")]
+	public void ParseFixtures(string path)
 	{
-		var files = Directory.GetFiles("./fixtures", "*.ftl");
-
-		foreach (var path in files)
-		{
-			output.WriteLine("Attempting to parse file: {0}", path);
-
 			var content = ReadFile(path, false);
 
-			var _ = Parser.Parse(content);
-		}
+			var res = new FluentParser().parse(content);
+			
+			Assert.True(true);
 	}
 }
