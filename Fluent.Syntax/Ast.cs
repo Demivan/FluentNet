@@ -65,9 +65,7 @@ public class BaseClassConverter : JsonConverter<SyntaxNode>
 	}
 }
 
-public abstract record BaseNode
-{
-}
+public abstract record BaseNode;
 
 [JsonConverter(typeof(BaseClassConverter))]
 public interface Entry
@@ -207,7 +205,7 @@ public interface ICallArgument
 public record Identifier(string Name) : SyntaxNode, IVariantKey
 {
 	public override string Type => nameof(Identifier);
-};
+}
 
 public abstract record BaseComment(string Content) : SyntaxNode, Entry;
 

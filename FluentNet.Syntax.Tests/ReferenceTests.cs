@@ -4,28 +4,20 @@ using System.Linq;
 using Fluent.Syntax;
 using Newtonsoft.Json;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace FluentNet.Syntax.Tests;
 
-public class ParserFixtures
+public class ReferenceTests
 {
-	private readonly ITestOutputHelper output;
-
-	public ParserFixtures(ITestOutputHelper output)
-	{
-		this.output = output;
-	}
-
 	private static string ReadFile(string path, bool trim)
 	{
 		var s = File.ReadAllText(path);
 		return trim ? s.Trim() : s;
 	}
 
-	[Theory]
-	[DirectoryFilesData("*.ftl", "./fixtures")]
-	public void ParseFixturesCompare(string path) {
+	[Theory(DisplayName = "Reference tests")]
+	[DirectoryFilesData("*.ftl", "./fixtures_reference")]
+	public void Test(string path) {
 		var referencePath = path.Replace(".ftl", ".json");
 		var referenceFile = ReadFile(referencePath, true);
 		var ftlFile = ReadFile(path, false);
@@ -56,16 +48,5 @@ public class ParserFixtures
 			var actual = JsonConvert.SerializeObject(parsedMessage, Formatting.Indented);
 			Assert.Equal(expected, actual);
 		}
-	}
-
-	[Theory]
-	[DirectoryFilesData("*.ftl", "./fixtures")]
-	public void ParseFixtures(string path)
-	{
-			var content = ReadFile(path, false);
-
-			var res = new FluentParser().parse(content);
-			
-			Assert.True(true);
 	}
 }

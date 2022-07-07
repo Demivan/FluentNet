@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="fixtures\**" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="fixtures_*\**" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
