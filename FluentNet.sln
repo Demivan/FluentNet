@@ -6,7 +6,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluent.Syntax", "Fluent.Syn
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2F433C1E-135E-468F-A4FD-ED6F7A0DA7A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentNet.Syntax.Tests", "FluentNet.Syntax.Tests\FluentNet.Syntax.Tests.csproj", "{CDA6EC75-96AD-4580-B68A-1D68BB7D2368}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluent.Syntax.Tests", "Fluent.Syntax.Tests\Fluent.Syntax.Tests.csproj", "{CDA6EC75-96AD-4580-B68A-1D68BB7D2368}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluent.SourceGenerator", "Fluent.SourceGenerator\Fluent.SourceGenerator.csproj", "{BAC13A61-F49F-4BF9-B460-CFA227C42775}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluent.SourceGeneratorTests", "Fluent.SourceGeneratorTests\Fluent.SourceGeneratorTests.csproj", "{C9FB8AF1-DAF5-47DD-92A4-797AB7399042}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,8 +30,17 @@ Global
 		{CDA6EC75-96AD-4580-B68A-1D68BB7D2368}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDA6EC75-96AD-4580-B68A-1D68BB7D2368}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDA6EC75-96AD-4580-B68A-1D68BB7D2368}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAC13A61-F49F-4BF9-B460-CFA227C42775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAC13A61-F49F-4BF9-B460-CFA227C42775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAC13A61-F49F-4BF9-B460-CFA227C42775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAC13A61-F49F-4BF9-B460-CFA227C42775}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9FB8AF1-DAF5-47DD-92A4-797AB7399042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9FB8AF1-DAF5-47DD-92A4-797AB7399042}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9FB8AF1-DAF5-47DD-92A4-797AB7399042}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9FB8AF1-DAF5-47DD-92A4-797AB7399042}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CDA6EC75-96AD-4580-B68A-1D68BB7D2368} = {2F433C1E-135E-468F-A4FD-ED6F7A0DA7A4}
+		{C9FB8AF1-DAF5-47DD-92A4-797AB7399042} = {2F433C1E-135E-468F-A4FD-ED6F7A0DA7A4}
 	EndGlobalSection
 EndGlobal

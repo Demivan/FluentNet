@@ -1,7 +1,7 @@
 using Fluent.Syntax;
 using Xunit;
 
-namespace FluentNet.Syntax.Tests;
+namespace Fluent.Syntax.Tests;
 
 public class UnicodeTests
 {

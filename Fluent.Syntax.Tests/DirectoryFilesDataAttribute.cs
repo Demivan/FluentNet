@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Xunit.Sdk;
 
-namespace FluentNet.Syntax.Tests;
+namespace Fluent.Syntax.Tests;
 
 /// <summary>
 /// Data attribute 

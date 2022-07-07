@@ -5,7 +5,7 @@ using Fluent.Syntax;
 using Newtonsoft.Json;
 using Xunit;
 
-namespace FluentNet.Syntax.Tests;
+namespace Fluent.Syntax.Tests;
 
 public class ReferenceTests
 {
